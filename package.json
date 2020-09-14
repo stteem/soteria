@@ -1,10 +1,10 @@
 {
-  "name": "js-starter",
+  "name": "soteria",
   "version": "0.0.1",
-  "description": "A boilerplate for starting js code",
+  "description": "An e-commerce app for soteria materials of Dr Abel Damina of the Power City International Ministries",
   "keywords": [
-    "js-starter",
-    "boilerplate"
+    "soteria",
+    "materials"
   ],
   "private": false,
   "main": "dist/index.js",
@@ -20,22 +20,37 @@
     "start": "parcel ./src/index.html"
   },
   "author": {
-    "name": "Build For SDG",
-    "email": "buildforsdg@andela.com"
+    "name": "Uwem Uke",
+    "email": "uwemeffionguke@gmail.com"
   },
-  "homepage": "https://github.com/BuildForSDG/js-starter#readme",
+  "homepage": "https://github.com/stteem/soteria#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/BuildForSDG/js-starter.git"
+    "url": "https://github.com/stteem/soteria.git"
   },
   "bugs": {
-    "url": "https://github.com/BuildForSDG/js-starter/issues"
+    "url": "https://github.com/stteem/soteria/issues"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.20.0",
+    "babel-runtime": "^6.26.0",
+    "bootstrap": "^4.5.2",
+    "react": "^16.13.1",
+    "react-burger-menu": "^2.7.1",
+    "react-dom": "^16.13.1",
+    "react-icons": "^3.11.0",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "reactstrap": "^8.5.1",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "uuid": "^8.3.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.10.4",
     "babel-jest": "^25.4.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
