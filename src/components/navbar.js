@@ -11,13 +11,12 @@ class NavBar extends Component {
             <div>
                 <Navbar dark expand="md">
                     <div className="container">
-                        <NavbarBrand className="mr-auto logo" href="/"> Soteria Materials
-                    	</NavbarBrand>
+                        <NavbarBrand className="mr-auto logo" href="/">Soteria</NavbarBrand>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <NavLink className="nav-link" to='/schools'>
+                                    <NavLink className="nav-link" to='/'>
                                         <Button style={{borderRadius:'20px',background:'transparent',opacity: 0.8}} className="butn"> 
-                                            For Schools
+                                            Admin
                                         </Button>
                                     </NavLink>
                                 </NavItem>

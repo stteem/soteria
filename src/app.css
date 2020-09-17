@@ -1,3 +1,64 @@
 .navbar-dark {
-  background-color: #03a9f4;
+  background-color: #f1c40f;
+}
+
+.banner-div {
+	width: 100%;
+}
+
+.banner {
+	width: 100%;
+}
+
+.banner-msg {
+	position: absolute;
+	top: 200px;
+	margin-left: 200px;
+}
+
+.featured {
+	display: flex;
+	flex-flow: column;
+	padding-left: 30px;
+	margin-top: 60px;
+}
+
+.book-div, .audio-div {
+	width: 60%;
+	margin-bottom: 30px;
+}
+.book-div {
+	margin-top: 20px;
+}
+
+@media(min-width: 900px){
+	.book-div, .audio-div {
+		width: 30%;
+	}
+}
+
+.book, .audio {
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+#coming-soon, span {
+	font-style: italic;
+	color: orange;
+}
+
+.allbooks {
+	margin-bottom: 40px;
+}
+
+#nav-books {
+	top: 0;
+	position: fixed;
+	z-index: 1;
+	width: 100%;
+}
+
+.books {
+	margin-top: 130px;
+	z-index: 0;
 }
