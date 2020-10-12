@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 //import { createForms } from 'react-redux-form';
 //import { Auth } from './auth';
 import { Books } from './books';
-//import { Item } from './imageid';
+import { CartCount } from './cartcount';
 //import { Article } from './articleid';
 //import { RegisterUser } from './createUser';
 import thunk from 'redux-thunk';
@@ -15,7 +15,8 @@ import logger from 'redux-logger';
 export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
-            books: Books
+            books: Books,
+            cartcount: CartCount
         }),
         applyMiddleware(thunk, logger)
     );

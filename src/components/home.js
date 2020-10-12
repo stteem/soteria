@@ -42,7 +42,7 @@ export default function Home(props) {
 						</CardBody>
 					</Card>
 				</div>
-				
+				<div id="copyright">A Uwem Uke production copyright 2020</div>
 			</div>
 		</div>
 	);

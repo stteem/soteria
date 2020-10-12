@@ -29,7 +29,7 @@ export const booksLoadingFailed = (errmess) => {
 export const fetchBooks = () => (dispatch) => {
     dispatch(booksLoading(true));
 
-    return fetch(baseUrl + 'api/books')
+    return fetch(baseUrl + 'api/items')
         .then(response => {
             if (response.ok) {
             	console.log('response ', response)
@@ -53,4 +53,58 @@ export const fetchBooks = () => (dispatch) => {
             console.log('errmess', error.message)
             dispatch(booksLoadingFailed(error.message))
         });
+}
+
+
+// UPDATE CART
+
+/*export const add = (count) => {
+    return {
+        type: ActionTypes.ADD_TO_CART,
+        payload: count
+    }
+}
+
+export const addToCart = (id, count) => (dispatch) => {
+	const updateCount = count + 1;
+	console.log(`add action id is ${id} and count is ${updateCount}`)
+    return dispatch(add(updateCount));
+}*/
+
+
+export const subtract = (itemid) => {
+    return {
+        type: ActionTypes.SUBTRACT_FROM_CART,
+        payload: itemid
+    }
+}
+
+export const subtractFromCart = (id) => (dispatch) => {
+	console.log(`subtract action id is ${id}`)
+    return dispatch(subtract(id));
+}
+
+export const addToCart = (id) => {
+  return dispatch => {
+  	console.log('this fired')
+    return new Promise((resolve, reject) => {
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: id
+      });
+      resolve()
+    });
+  }
+}
+
+
+export const fetchCart = () => (dispatch) => {
+	return dispatch({
+		type: "FETCH_CART"
+	})
+}
+
+
+export const addQty = (id, price) => (dispatch) => {
+	
 }

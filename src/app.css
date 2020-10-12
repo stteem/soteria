@@ -62,3 +62,72 @@
 	margin-top: 130px;
 	z-index: 0;
 }
+
+
+/* Cart*/
+
+#mycart {
+	margin-bottom: 30px;
+}
+
+.cartcard-div {
+	width: 60%;
+}
+
+.cartcard {
+	display: flex;
+	flex-flow: row;
+}
+
+.qty-div-card {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+}
+
+.qty-div {
+	display: flex;
+	flex-flow: row;
+}
+
+.qty-div-sub-btn {
+	width: 36.95px;
+}
+
+.del-btn {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+}
+
+.del-icon {
+	font-size: 25px;
+	color: red;
+}
+
+@media(min-width: 724px){
+	.cartcard-div{
+		width: 25%;
+	}
+}
+
+.tryagain {
+  border-radius: 25px;
+}
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 250px;
+}
+.centreItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.qty {
+	width: 25px;
+}
+
+#copyright {
+	font-size: 11px;
+}

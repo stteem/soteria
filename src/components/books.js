@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardImg, CardTitle, CardBody, CardSubtitle, CardText, Button,
 		Nav, Navbar, NavbarBrand, NavItem  } from 'reactstrap';
 import { Link, NavLink } from 'react-router-dom';
+import { Loading } from './loading';
 
 import { BsArrowLeft } from 'react-icons/bs';
 
@@ -21,7 +22,9 @@ var BOOKS = [
 ];
 
 
-function RenderBooks({book, addToCart}) {
+
+
+function RenderBooks({book, itemids, updateCart}) {
     return(
         <Card className="allbooks">
             <CardBody>
@@ -30,12 +33,29 @@ function RenderBooks({book, addToCart}) {
               	<CardImg width="100%" src={bookImg} alt="book image" />
               	<CardText>{book.price}</CardText>
             </Link>
-            	<form>
-	              	<Button className="add-to-cart" style={{textDecoration:'none'}} color="link" 
-	              		onClick={(e, id) => addToCart(e, book.id)}>
-	              		Add to cart
-	          		</Button>
-          		</form>
+            		{
+            			itemids.length != 0 ?
+            				itemids.includes(book._id) ?
+            					<Button className="add-to-cart" style={{textDecoration:'none'}} color="link" 
+					          		onClick={(e, id) => updateCart(e, book._id)}
+					      		>
+					          		Remove from cart
+					      		</Button>
+            				:
+        					<Button className="add-to-cart" style={{textDecoration:'none'}} color="link" 
+				          		onClick={(e, id) => updateCart(e, book._id)}
+				      		>
+				          		Add to cart
+				      		</Button>
+            			:
+            			
+    					<Button className="add-to-cart" style={{textDecoration:'none'}} color="link" 
+			          		onClick={(e, id) => updateCart(e, book._id)}
+			      		>
+			          		Add to cart
+			      		</Button>	
+			      		
+            		}
             </CardBody>
         </Card>
     );   
@@ -47,56 +67,64 @@ class Books extends React.Component {
 	constructor(props){
 		super(props);
 
-		this.addToCart = this.addToCart.bind(this);
-
+		this.updateCart = this.updateCart.bind(this);
 		this.state = {
 	      books: BOOKS,
-	      cart: 0
+	      cartcount: 0
 	    };
 	}
 
-	addToCart(event, id) {
 
-		if (event.target.textContent === 'Add to cart') {
-			let target = event.target.textContent = 'Remove from cart';
-			console.log('target ', target)
-			console.log('id ', id)
-			this.setState((prevState) => {
-		      let count = prevState.cart + 1;
-		      console.log('setting state', count)
-		      return { cart: count };
-		    },
-		    () => {
-		    	target;
-		    });
+	updateCart(event, id) {
+
+		let target = event.target.textContent;
+
+		if (target === 'Add to cart') {
+						
+			this.props.addToCart(id)
+
 		}
 		else {
-			let target = event.target.textContent = 'Add to cart';
-			console.log('target ', target)
-			console.log('id ', id)
-			this.setState((prevState) => {
-		      let count = prevState.cart - 1;
-		      console.log('setting state', count)
-		      return { cart: count };
-		    },
-		    () => {
-		    	target;
-		    });
+			
+		    this.props.subtractFromCart(id);
 		}
 	}
+
 
 
     render() {
 
-    	const cart = this.state.cart;
+    	const count = this.props.books.cartcount;
         const book = this.props.books.books.map((book, index) => {
             return ( 
                 <div key={index} className="col-8 col-md-4 col-lg-3">
-                    <RenderBooks book={book} addToCart={this.addToCart} />
+                    <RenderBooks book={book} itemids={this.props.itemids} updateCart={this.updateCart} />
                 </div>     
             );
         });
-        
+
+
+        if (this.props.books.isLoading) {
+            return(
+                <div className="container spinner">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        else if (this.props.books.errMess) {
+            return(
+                <div className="container">
+                    <div className="row centreItem">
+                        <h5>{this.props.books.errMess}</h5>
+                    </div>
+                    <div className="centreItem"><Button className="tryagain" onClick={() => this.props.fetchBooks()}>Try again</Button></div>
+                </div>
+            );
+        }
+
+        else
         return (
         	<div>
 	        	<Navbar dark expand="md" id="nav-books">
@@ -110,9 +138,9 @@ class Books extends React.Component {
                         </Nav>
                         <NavbarBrand className="mc-auto logo" href="/">Soteria</NavbarBrand>
                         <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <NavLink className="nav-link" to='/'>
-                                    <FiShoppingCart style={{fontSize:'25px'}}/> {cart}
+                            <NavItem onClick={this.props.fetchCart}>
+                                <NavLink className="nav-link" to='/cart'>
+                                    <FiShoppingCart style={{fontSize:'25px'}}/> {count}
                                 </NavLink>
                             </NavItem>
                         </Nav>
