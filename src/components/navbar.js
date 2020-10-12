@@ -16,7 +16,7 @@ class NavBar extends Component {
                                 <NavItem>
                                     <NavLink className="nav-link" to='/'>
                                         <Button style={{borderRadius:'20px',background:'transparent',opacity: 0.8}} className="butn"> 
-                                            Admin
+                                            Login
                                         </Button>
                                     </NavLink>
                                 </NavItem>

@@ -16,12 +16,12 @@ export default function Home(props) {
 			<div className="header-div">
 				<div className="banner-div">
 					<img className="banner" src={banner} alt="banner" />
-					<div id="banner-msg">
-						<h3>Find Books and Audio Messages by Dr Abel Damina of the Power City International Ministry</h3>
-					</div>
+					
 				</div>
 				<div className="featured container">
-					<h4>Featured Materials</h4>
+					<div id="banner-msg">
+						<h5>Find Books and Audio Messages by Dr Abel Damina of the Power City International Ministry</h5>
+					</div>
 					<Card className="book-div">
 						<Link to="/books" style={{ textDecoration: 'none', color:'black' }}>
 							<CardBody onClick={async () => await props.fetchBooks()} >
@@ -42,7 +42,7 @@ export default function Home(props) {
 						</CardBody>
 					</Card>
 				</div>
-				<div id="copyright">A Uwem Uke production copyright 2020</div>
+				<div id="copyright">A @UwemUke production &#169;2020</div>
 			</div>
 		</div>
 	);
