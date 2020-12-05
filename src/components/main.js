@@ -38,7 +38,7 @@ class Main extends Component {
   }
 
   
-  //On page reload, this function supplys image ID to the endpoint
+  //On books path page reload, this function calls the books items endpoint
   async getParamAndFetchBooks() {
 
     const match = matchPath(this.props.history.location.pathname, {
@@ -76,7 +76,7 @@ class Main extends Component {
 				<Switch>
 					<Route path="/home" component={() =>  <Home fetchBooks={this.props.fetchBooks} /> } />
           <Route path="/books" component={() =>  <Books books={this.props.books} itemids={this.props.books.itemids} addToCart={this.props.addToCart} 
-                                                        subtractFromCart={this.props.subtractFromCart} fetchCart={this.props.fetchCart} /> } />
+                                                        subtractFromCart={this.props.subtractFromCart} fetchBooks={this.props.fetchBooks} fetchCart={this.props.fetchCart} /> } />
 					<Route path="/cart" component={() =>  <Cart cart={this.props.books} books={this.props.books} addQty={this.props.addQty} /> } />
           <Redirect to="/home" />
 				</Switch>
